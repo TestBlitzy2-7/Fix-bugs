@@ -1,11 +1,52 @@
 {
     "name": "hello_world",
     "version": "1.0.0",
-    "description": "Hello world in Node.js",
-    "main": "index.js",
+    "description": "Hello world in Node.js with enhanced robustness features",
+    "main": "server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node server.js",
+        "stop": "pkill -SIGTERM -f \"node server.js\" || echo \"Server not running\"",
+        "test": "node --test test/**/*.test.js",
+        "test:unit": "node --test test/unit/**/*.test.js",
+        "test:integration": "node --test test/integration/**/*.test.js",
+        "test:robustness": "node --test test/robustness/**/*.test.js",
+        "test:shutdown": "node --test test/robustness/shutdown.test.js",
+        "test:validation": "node --test test/robustness/validation.test.js",
+        "test:error-handling": "node --test test/robustness/errorHandling.test.js",
+        "test:resource-cleanup": "node --test test/robustness/resourceCleanup.test.js",
+        "test:performance": "node --test test/performance/**/*.test.js",
+        "test:coverage": "node --test --experimental-test-coverage test/**/*.test.js",
+        "test:all": "npm run test:unit && npm run test:integration && npm run test:robustness && npm run test:performance",
+        "dev": "node server.js",
+        "dev:stop": "npm run stop",
+        "validate": "node --check server.js",
+        "lint": "echo \"No linting configured - maintaining zero-dependency philosophy\"",
+        "pretest": "npm run validate"
     },
+    "keywords": [
+        "nodejs",
+        "http-server",
+        "testing",
+        "machine-learning-integration",
+        "robustness",
+        "graceful-shutdown",
+        "zero-dependencies"
+    ],
     "author": "hxu",
-    "license": "MIT"
+    "license": "MIT",
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=7.0.0"
+    },
+    "devDependencies": {
+        "c8": "^8.0.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/your-org/hao-backprop-test.git"
+    },
+    "bugs": {
+        "url": "https://github.com/your-org/hao-backprop-test/issues"
+    },
+    "homepage": "https://github.com/your-org/hao-backprop-test#readme"
 }
